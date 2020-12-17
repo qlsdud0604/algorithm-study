@@ -135,7 +135,7 @@ private void resize(int capacity) {
 ㆍ 배열의 크기를 동적으로 변경해 주는 메소드이다.   
   
 -----
-**4. 참고 문헌 및 자료**
+## 4. 참고 문헌 및 자료
 * R.Sedgewick and K. Wayne, Algorithms (4th Ed.), Addison-Wesley.
 * E. Horowitz, S. Sahni, S. Anderson-Freed, Fundamentals of Data Structures in C, Silicon Press, 2nd Edition.
 * https://algs4.cs.princeton.edu/31elementary/
