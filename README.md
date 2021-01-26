@@ -12,7 +12,7 @@
 -----
 ## 3. 구현 방법 
 **1) 노드의 구성**
-```
+```java
 class Node<K, V> {
 	K key;
 	V value;
@@ -28,7 +28,7 @@ class Node<K, V> {
 ㆍ 노드는키, 값, 다음 노드를 가리키는 참조의 쌍으로 구성되어 있다.   
 
 **2) Symbol table의 기본 구성**
-```
+```java
 public class SequentialSearchST<K, V> {
 	private Node<K, V> first;
 	int N;
@@ -38,7 +38,7 @@ public class SequentialSearchST<K, V> {
 ㆍ 연결 리스트의 노드 수에 대한 변수인 N이 있다.   
 
 **3) get(K key) 메소드**
-```
+```java
 public V get(K key) {
 	for (Node<K, V> x = first; x != null; x = x.next)
 		if (key.equals(x.key))
@@ -52,7 +52,7 @@ public V get(K key) {
 ㆍ 찾지 못했으면 null을 리턴한다.   
 
 **4) put(K key, V value) 메소드**
-```
+```java
 public void put(K key, V value) {
 	for (Node<K, V> x = first; x != null; x = x.next)
 		if (key.equals(x.key)) {
@@ -68,7 +68,7 @@ public void put(K key, V value) {
 ㆍ 해당 키가 없을 경우 새로운 (키, 값) 쌍을 추가하고, 전체 노드의 수를 1 증가 시킨다.   
 
 **5) delete(K key) 메소드** 
-```
+```java
 public void delete(K key) {
 	if (key.equals(first.key)) { 
 		first = first.next;
@@ -89,7 +89,7 @@ public void delete(K key) {
 ㆍ 첫번째 노드를 삭제하지 않는 경우는 연결 리스트를 처음부터 스캔하고, 삭제할 노드를 찾는다.   
 
 **6) keys() 메소드**
-```
+```java
 public Iterable<K> keys() {
 	ArrayList<K> keyList = new ArrayList<K>(N);
 
@@ -103,7 +103,7 @@ public Iterable<K> keys() {
 ㆍ 마지막에는 연결 리스트의 모든 키가 추가된 ArrayList를 반환한다.   
 
 **7) contains(K key) 메소드**
-```
+```java
 public boolean contains(K key) {
 	return get(key) != null;
 }
@@ -111,7 +111,7 @@ public boolean contains(K key) {
 ㆍ get(K key) 메소드의 반환값을 판단하여 키의 포함여부를 알아낸다.   
 
 **8) isEmpty() 메소드**
-```
+```java
 public boolean isEmpty() {
 	return N == 0;
 }
@@ -119,7 +119,7 @@ public boolean isEmpty() {
 ㆍ 연결 리스트의 노드 개수를 판단하여 빈 연결 리스트인지 알아낸다.   
 
 **9) size() 메소드**
-```
+```java
 public int size() {
 	return N;
 }
