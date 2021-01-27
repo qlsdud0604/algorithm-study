@@ -12,7 +12,7 @@
 -----
 ## 3. 구현 방법
 **1) Symbol table의 기본 구성**
-```
+```java
 public class BinarySearchST<K extends Comparable<K>, V> {
 	private static final int INIT_CAPACITY = 10;
 	private K[] keys;
@@ -24,7 +24,7 @@ public class BinarySearchST<K extends Comparable<K>, V> {
 ㆍ (키, 값) 쌍의 개수에 대한 변수인 N이 있다.   
 
 **2) search(K key) 메소드**
-```
+```java
 private int search(K key) {
 	int low = 0;
 	int high = N - 1;
@@ -47,7 +47,7 @@ private int search(K key) {
 ㆍ 키가 없을 경우 -1이 아닌 low값을 반환한다.   
 
 **3) get(K key) 메소드**
-```
+```java
 public V get(K key) {
 	if (isEmpty())
 		return null;
@@ -64,7 +64,7 @@ public V get(K key) {
 ㆍ 키가 없을 경우에는 null을 반환한다.
 
 **4) put(K key, V value) 메소드**
-```
+```java
 public void put(K key, V value) {
 	int i = search(key);
 
@@ -89,7 +89,7 @@ public void put(K key, V value) {
 ㆍ 키가 없다면 추가될 곳의 공간을 확보 한 후 (키, 값) 쌍을 삽입한다.   
 
 **5) delete(K key) 메소드**
-```
+```java
 public void delete(K key) {
 	if (isEmpty())
 		return;
@@ -118,7 +118,7 @@ public void delete(K key) {
 ㆍ만약 키가 있다면, 뒤에 있는 원소들을 해당 키의 위치까지 한칸 씩 앞으로 옮긴다.   
 
 **6) resize(int capacity) 메소드**
-```
+```java
 private void resize(int capacity) {
 	K[] tempk = (K[]) new Comparable[capacity];
 	V[] tempv = (V[]) new Object[capacity];
