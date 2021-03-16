@@ -69,6 +69,39 @@ class Graph {
 			System.out.print(returnNode.data + " ");
 		}
 	}
+	
+	void dfsRecursion(int startIndex) {
+		Node root = nodes[startIndex];
+
+		dfsRecursion(root);
+	}
+	
+	/** 재귀 방식을 이용한 깊이 우선 탐색 메소드 */
+	void dfsRecursion(Node startIndex) {
+		if (startIndex == null)
+			return;
+
+		startIndex.marked = true;
+
+		System.out.print(startIndex.data + " ");
+
+		/** 인접한 노드들이 여러개일 경우 노드의 데이터가 작은 것부터 방문 */
+		Collections.sort(startIndex.adjacentNodes, new Comparator<Node>() {
+
+			@Override
+			public int compare(Node o1, Node o2) {
+				if (o1.data > o2.data)
+					return 1;
+				else
+					return -1;
+			}
+		});
+
+		for (Node node : startIndex.adjacentNodes) {
+			if (node.marked == false)
+				dfsRecursion(node);
+		}
+	}
 
 }
 
@@ -82,6 +115,6 @@ public class Main {
 		g.addEdge(1, 3);
 		g.addEdge(2, 3);
 
-		g.dfs(0);
+		g.dfsRecursion(0);
 	}
 }
