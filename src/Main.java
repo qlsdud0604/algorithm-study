@@ -1,4 +1,7 @@
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.Stack;
 
 class Graph {
 
@@ -33,8 +36,52 @@ class Graph {
 			nodes[index02].adjacentNodes.add(nodes[index01]);
 	}
 
+	/** 깊이 우선 탐색 메소드 */
+	void dfs(int startIndex) {
+		Node root = nodes[startIndex];
+
+		Stack<Node> stack = new Stack<Node>();
+
+		stack.add(root);
+		root.marked = true;
+
+		while (!stack.isEmpty()) {
+			Node returnNode = stack.pop();
+
+			/** 인접한 노드들이 여러개일 경우 노드의 데이터가 작은 것부터 방문 */
+			Collections.sort(returnNode.adjacentNodes, new Comparator<Node>() {
+
+				@Override
+				public int compare(Node o1, Node o2) {
+					if (o1.data > o2.data)
+						return 1;
+					else
+						return -1;
+				}
+			});
+
+			for (Node node : returnNode.adjacentNodes) {
+				if (node.marked == false) {
+					node.marked = true;
+					stack.add(node);
+				}
+			}
+			System.out.print(returnNode.data + " ");
+		}
+	}
+
 }
 
 public class Main {
+	public static void main(String[] args) {
 
+		Graph g = new Graph(4);
+		g.addEdge(0, 1);
+		g.addEdge(0, 2);
+		g.addEdge(0, 3);
+		g.addEdge(1, 3);
+		g.addEdge(2, 3);
+
+		g.dfs(0);
+	}
 }
