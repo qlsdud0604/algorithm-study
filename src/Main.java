@@ -1,6 +1,7 @@
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 class Graph {
@@ -102,7 +103,40 @@ class Graph {
 				dfsRecursion(node);
 		}
 	}
+	
+	/** 넓이 우선 탐색 메소드 */
+	void bfs(int startIndex) {
+		Node root = nodes[startIndex];
 
+		Queue<Node> queue = new LinkedList<Node>();
+
+		queue.add(root);
+		root.marked = true;
+
+		while (!queue.isEmpty()) {
+			Node returnNode = queue.poll();
+
+			/** 인접한 노드들이 여러개일 경우 노드의 데이터가 작은 것부터 방문 */
+			Collections.sort(returnNode.adjacentNodes, new Comparator<Node>() {
+
+				@Override
+				public int compare(Node o1, Node o2) {
+					if (o1.data > o2.data)
+						return 1;
+					else
+						return -1;
+				}
+			});
+
+			for (Node node : returnNode.adjacentNodes) {
+				if (node.marked == false) {
+					node.marked = true;
+					queue.add(node);
+				}
+			}
+			System.out.print(returnNode.data + " ");
+		}
+	}
 }
 
 public class Main {
@@ -115,6 +149,6 @@ public class Main {
 		g.addEdge(1, 3);
 		g.addEdge(2, 3);
 
-		g.dfsRecursion(0);
+		g.bfs(0);
 	}
 }
