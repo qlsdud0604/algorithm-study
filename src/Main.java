@@ -26,7 +26,7 @@ class Edge implements Comparable<Edge> {
 }
 
 public class Main {
-	static int[] parent;
+	static int[] parents;
 
 	public static void main(String[] args) {
 		Edge[] edges = new Edge[9];
@@ -41,31 +41,36 @@ public class Main {
 		edges[7] = new Edge(3, 4, 9);
 		edges[8] = new Edge(4, 5, 11);
 
-		parent = new int[6];
+		parents = new int[6];
 
-		for (int i = 0; i < parent.length; i++)
-			parent[i] = i;
+		for (int i = 0; i < parents.length; i++)
+			parents[i] = i;
+		
+		System.out.print(kruskal(edges));
 
 	}
 
+	/** 특정 노드의 부모 노드를 반환하는 메소드 */
 	static int find(int node) {
-		if (parent[node] == node)
+		if (parents[node] == node)
 			return node;
 
-		return parent[node] = find(parent[node]);
+		return find(parents[node]);
 	}
 
+	/** 각 부모 노드를 합치는 메소드 */
 	static void union(int node01, int node02) {
 		node01 = find(node01);
 		node02 = find(node02);
 
 		if (node01 < node02)
-			parent[node02] = node01;
+			parents[node02] = node01;
 		else
-			parent[node01] = node02;
+			parents[node01] = node02;
 	}
 
-	static boolean isSameParent(int node01, int node02) {
+	/** 같으 부모 노드를 가지는 지 확인하는 메소드 */
+	static boolean haveSameParent(int node01, int node02) {
 		node01 = find(node01);
 		node02 = find(node02);
 
@@ -73,5 +78,22 @@ public class Main {
 			return true;
 		else
 			return false;
+	}
+
+	/** 최소 스패닝 트리를 구하는 메소드 */
+	static int kruskal(Edge[] edges) {
+		Arrays.sort(edges);
+
+		int sum = 0;
+
+		for (int i = 0; i < edges.length; i++) {
+			Edge returnEdge = edges[i];
+
+			if (!haveSameParent(returnEdge.node01, returnEdge.node02)) {
+				sum += returnEdge.cost;
+				union(returnEdge.node01, returnEdge.node02);
+			}
+		}
+		return sum;
 	}
 }
