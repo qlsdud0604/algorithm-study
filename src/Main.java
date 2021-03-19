@@ -26,7 +26,52 @@ class Edge implements Comparable<Edge> {
 }
 
 public class Main {
-	public static void main(String[] args) {
+	static int[] parent;
 
+	public static void main(String[] args) {
+		Edge[] edges = new Edge[9];
+
+		edges[0] = new Edge(0, 3, 4);
+		edges[1] = new Edge(0, 1, 6);
+		edges[2] = new Edge(1, 2, 5);
+		edges[3] = new Edge(1, 3, 3);
+		edges[4] = new Edge(1, 4, 7);
+		edges[5] = new Edge(1, 5, 8);
+		edges[6] = new Edge(2, 5, 8);
+		edges[7] = new Edge(3, 4, 9);
+		edges[8] = new Edge(4, 5, 11);
+
+		parent = new int[6];
+
+		for (int i = 0; i < parent.length; i++)
+			parent[i] = i;
+
+	}
+
+	static int find(int node) {
+		if (parent[node] == node)
+			return node;
+
+		return parent[node] = find(parent[node]);
+	}
+
+	static void union(int node01, int node02) {
+		node01 = find(node01);
+		node02 = find(node02);
+
+		if (node01 < node02)
+			parent[node02] = node01;
+		else
+			parent[node01] = node02;
+	}
+
+	static boolean isSameParent(int node01, int node02) {
+		node01 = find(node01);
+		node02 = find(node02);
+
+		if (node01 == node02)
+			return true;
+		else
+			return false;
 	}
 }
