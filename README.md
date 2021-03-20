@@ -33,25 +33,25 @@ class Graph {
 			nodes[i] = new Node(i);
 	}
  }
- ```
- ㆍ 그래프가 가지고 있는 노드의 정보를 클래스로써 정의하였다.   
- ㆍ 각각의 노드는 데이터(data), 인접한 노드들(adjacentNodes), 방문여부 획인 변수(marked)를 가지고 있다.  
+```
+ㆍ 그래프가 가지고 있는 노드의 정보를 클래스로써 정의하였다.   
+ㆍ 각각의 노드는 데이터(data), 인접한 노드들(adjacentNodes), 방문여부 획인 변수(marked)를 가지고 있다.  
  
- **2) 엣지를 구성해주는 메소드**
- ```java
- void addEdge(int index01, int index02) {
+**2) 엣지를 구성해주는 메소드**
+```java
+void addEdge(int index01, int index02) {
 	if (!nodes[index01].adjacentNodes.contains(nodes[index02]))
 		nodes[index01].adjacentNodes.add(nodes[index02]);
 
 	if (!nodes[index02].adjacentNodes.contains(nodes[index01]))
 		nodes[index02].adjacentNodes.add(nodes[index01]);
 }
- ```
- ㆍ 엣지를 구성할 두개의 노드를 매개변수로 입력받아 adjacentNodes에 각각의 노드들을 추가해준다.   
+```
+ㆍ 엣지를 구성할 두개의 노드를 매개변수로 입력받아 adjacentNodes에 각각의 노드들을 추가해준다.   
  
- **3) 스택 자료구조를 이용한 DFS 알고리즘**
- ```java
- void dfs(int startIndex) {
+**3) 스택 자료구조를 이용한 DFS 알고리즘**
+```java
+void dfs(int startIndex) {
 	Node root = nodes[startIndex];
 
 	Stack<Node> stack = new Stack<Node>();
@@ -82,16 +82,16 @@ class Graph {
 		System.out.print(returnNode.data + " ");
 	}
 }
- ```
- ㆍ 우선, 탐색을 시작할 노드를 스택 자료구조에 삽입한다.   
- ㆍ 스택에서 노드를 꺼내고 꺼낸 노드의 아직 방문하지 않은 인접한 노드들을 스택에 삽입한다.   
- ㆍ 인접한 노드들이 여러개일 경우 노드의 데이터가 작은 순서대로 삽입한다.   
- ㆍ 삽입과정이 마무리되면 꺼낸 노드에 대한 정보를 출력한다.   
- ㆍ 위 과정을 스택에 데이터가 없을때까지 반복한다.   
+```
+ㆍ 우선, 탐색을 시작할 노드를 스택 자료구조에 삽입한다.   
+ㆍ 스택에서 노드를 꺼내고 꺼낸 노드의 아직 방문하지 않은 인접한 노드들을 스택에 삽입한다.   
+ㆍ 인접한 노드들이 여러개일 경우 노드의 데이터가 작은 순서대로 삽입한다.   
+ㆍ 삽입과정이 마무리되면 꺼낸 노드에 대한 정보를 출력한다.   
+ㆍ 위 과정을 스택에 데이터가 없을때까지 반복한다.   
  
- **4) 재귀 방법을 이용한 DFS 알고리즘**
- ```java
- void dfsRecursion(Node startIndex) {
+**4) 재귀 방법을 이용한 DFS 알고리즘**
+```java
+void dfsRecursion(Node startIndex) {
 	if (startIndex == null)
 		return;
 
@@ -115,11 +115,11 @@ class Graph {
 			dfsRecursion(node);
 	}
 }
- ```
- ㆍ 탐색을 시작할 노드를 우선 출력한다.   
- ㆍ 시작 노드의 아직 방문하지 않은 인접한 노드들을 순서대로 재귀적으로 메소드를 호출한다.   
+```
+ㆍ 탐색을 시작할 노드를 우선 출력한다.   
+ㆍ 시작 노드의 아직 방문하지 않은 인접한 노드들을 순서대로 재귀적으로 메소드를 호출한다.   
  
- -----
+-----
 ## 1. BFS란?
 * BFS는 우선 탐색으로 그래프의 탐색 방법 중 하나이다.   
 * 시작 정점을 방문한 후 시작 정점에 인접한 모든 정점을 방문한 후 시작 정점에 인접한 모든 정점들을 우선 방문하는 방법이다.
