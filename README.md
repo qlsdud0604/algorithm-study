@@ -48,7 +48,7 @@ void addEdge(int index01, int index02) {
 	nodes[index02].indegree++;
 }
  ```
-ㆍ index01 index02의 관계를 가지는 두 노드를 매개변수로 입력받는다.   
+ㆍ index01, index02의 관계를 가지는 두 노드를 매개변수로 입력받는다.   
 ㆍ index01 노드의 adjacentNodes에 index02 노드를 추가해준다.   
 ㆍ 추가로 index02 노드의 진입 차수를 1만큼 증가시킨다.   
 
