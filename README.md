@@ -1,1 +1,1 @@
-# Data-Structure-Study
+# 자료 구조 공부
