@@ -1,4 +1,6 @@
 # 다양한 정렬 알고리즘
+
+---
 ## 1. 구현한 정렬 알고리즘
 * 선택 정렬
 * 삽입 정렬
@@ -7,10 +9,14 @@
 * 기수 정렬
 * 병합 정렬 (Top-Down)
 * 병합 정렬 (Bottom-Up)
+</br>
 
 -----
 ## 2. 구현 방법
 **1) 추상 클래스**
+<details>
+    <summary><b>코드 보기</b></summary>
+	
 ```java
 public abstract class AbstractSort {
 
@@ -48,9 +54,15 @@ public abstract class AbstractSort {
 	}
 }
 ```
+</details>
+	
 ㆍ 각각의 정렬 알고리즘들이 상속받을 추상클래스를 구현하였다.   
+</br>
 
 **2) 선택 정렬**
+<details>
+    <summary><b>코드 보기</b></summary>
+	
 ```java
 public class Selection extends AbstractSort {
 	public static void sort(Comparable[] a) {
@@ -67,10 +79,16 @@ public class Selection extends AbstractSort {
 	}
 }
 ```
+</details>
+
 ㆍ 입력된 배열 리스트에서 최솟값을 찾고, 이 값을 현재 위치의 값과 교환한다.  
-ㆍ 그리고 현재 위치를 다음으로 이동하면서 앞에 과정을 반복해나가는 방식이다.
+ㆍ 그리고 현재 위치를 다음으로 이동하면서 앞에 과정을 반복해나가는 방식이다.   
+</br>
 
 **3) 삽입 정렬**
+<details>
+    <summary><b>코드 보기</b></summary>
+	
 ```java
 public class Insertion extends AbstractSort {
 	public static void sort(Comparable[] a) {
@@ -83,11 +101,17 @@ public class Insertion extends AbstractSort {
 	}
 }
 ```
+</details>
+	
 ㆍ 현재 위치를 i라고 한다. (0 < i < n)   
-ㆍ i번째 원소를 0부터 i-1까지 정렬된 배열 리스트에 추가한다.  
-ㆍ i를 n-1까지 증가하면서 위 과정을 반복한다.  
+ㆍ i 번째 원소를 0부터 i-1까지 정렬된 배열 리스트에 추가한다.  
+ㆍ i를 n-1까지 증가하면서 위 과정을 반복한다.   
+</br>
 
 **4) 쉘 정렬**
+<details>
+    <summary><b>코드 보기</b></summary>
+	
 ```java
 public class Shell extends AbstractSort {
 	public static void sort(Comparable[] a) {
@@ -106,11 +130,17 @@ public class Shell extends AbstractSort {
 	}
 }
 ```
+</details>
+	
 ㆍ hr, hr-1, ..., h1까지의 수열을 가정한다. (h1 = 1, hi-1 < hi)  
-ㆍ 처음에는 hr개 떨어진 원소들간에 삽입 정렬을 한다.  
-ㆍ 이후 hr-1부터 h1까지 h를 줄이면서 삽입 정렬을 하는 방식이다.  
+ㆍ 처음에는 hr개 떨어진 원소들 간에 삽입 정렬을 한다.  
+ㆍ 이후 hr-1부터 h1까지 h를 줄이면서 삽입 정렬을 하는 방식이다.   
+</br>
 
 **5) 계수 정렬**
+<details>
+    <summary><b>코드 보기</b></summary>
+	
 ```java
 public class Counting {
 	public static int[] sort(int[] A, int K) {
@@ -129,14 +159,20 @@ public class Counting {
 	}
 }
 ```
+</details>
+	
 ㆍ 키 값이 0 ~ K-1 사이의 정수일 경우 적용 가능한 정렬이다.  
 ㆍ 입력 배열: A[n], 임시 배열: C[K], 결과 배열: B[n]을 사용하여 정렬을 한다.  
-ㆍ A에 나오는 모든 값들에 대해 그 빈도수를 C에 계산한다.   
+ㆍ A[ ] 배열에 나오는 모든 값들에 대해 그 빈도수를 C[ ] 배열에 계산한다.   
 ㆍ A[i] = 72이며, C[0] 부터 C[71]까지의 합이 53일 때, B[53]에 72를 저장하는 방식이다.   
 <img src="https://user-images.githubusercontent.com/61148914/87389119-1d69ae00-c5e1-11ea-9fed-ef019a0a2473.JPG" width="45%">   
 ㆍ 계수 정렬이 동작하는 과정은 위 사진과 같다.   
-   
+</br>
+	
 **6) 기수 정렬**
+<details>
+    <summary><b>코드 보기</b></summary>
+	
 ```java
 public class Radix {
 	public static void sort(int[] A) {
@@ -168,10 +204,16 @@ public class Radix {
 	}
 }
 ```
+</details>
+	
 ㆍ 낮은 자리수부터 비교하여 정렬하는 형태의 알고리즘이다.   
 ㆍ 낮은 자리수의 정렬이 끝나면 높은 자리수 순서대로 위 과정을 반복한다.   
+</br>
 
 **7) 병합 정렬 (Top-Down)**
+<details>
+    <summary><b>코드 보기</b></summary>
+	
 ```java
 public class MergeTD extends AbstractSort {
 	private static void merge(Comparable[] a, Comparable[] aux, int low, int middle, int high) {
@@ -213,13 +255,19 @@ public class MergeTD extends AbstractSort {
 	}
 }
 ```
+</details>
+	
 ㆍ 배열을 두 부분으로 분할한다.   
 ㆍ 각 부분을 재귀적으로 정렬한다.   
 ㆍ 두 부분을 병합하는 순으로 정렬이 이루어진다.   
 <img src="https://user-images.githubusercontent.com/61148914/87500871-9d068400-c698-11ea-8aa7-608e099ec86f.JPG" width="50%">   
 ㆍ Top-Down 병합 정렬의 동작 과정은 위 사진과 같다.   
+</br>
 
 **8) 병합 정렬 (Bottom-Up)**
+<details>
+    <summary><b>코드 보기</b></summary>
+	
 ```java
 public class MergeBU extends AbstractSort {
 	private static void merge(Comparable[] in, Comparable[] out, int low, int middle, int high) {
@@ -262,12 +310,16 @@ public class MergeBU extends AbstractSort {
 	}
 }
 ```
+</details>
+	
 ㆍ 배열에서 크기 1인 부분 즉, 배열내 원소 단위부터 병합을 한다.   
 ㆍ 부분의 크기를 2, 4, 8, ... 로 증가하면서 위 과정을 반복한다.    
 <img src="https://user-images.githubusercontent.com/61148914/87501113-40f02f80-c699-11ea-819b-598f1e1e9a7d.JPG" width="50%">   
-ㆍ Bottom-UP 병합 정렬의 동작 과정은 위 사진과 같다.
+ㆍ Bottom-UP 병합 정렬의 동작 과정은 위 사진과 같다.   
+</br>
 
 -----
 ## 3. 참고 문헌 및 자료
 * R.Sedgewick and K. Wayne, Algorithms (4th Ed.), Addison-Wesley.
-* E. Horowitz, S. Sahni, S. Anderson-Freed, Fundamentals of Data Structures in C, Silicon Press, 2nd Edition.
+* E. Horowitz, S. Sahni, S. Anderson-Freed, Fundamentals of Data Structures in C, Silicon Press, 2nd Edition.   
+</br>
