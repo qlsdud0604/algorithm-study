@@ -18,4 +18,6 @@
 * [크루스칼 알고리즘](https://github.com/qlsdud0604/algorithm-study/tree/main/kruskal)
 
 * [위상 정렬](https://github.com/qlsdud0604/algorithm-study/tree/main/topological-sorting)   
+
+* [다익스트라 알고리즘](https://github.com/qlsdud0604/algorithm-study/tree/main/dijkstra)   
 </br>
