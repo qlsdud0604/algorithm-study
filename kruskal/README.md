@@ -6,7 +6,7 @@
 </br>
 
 ---
-## 2. 크루스칼 알라즘의 동작 과정
+## 2. 크루스칼 알고리즘의 동작 과정
 <img src="https://user-images.githubusercontent.com/61148914/112142522-0a9c8400-8c1a-11eb-8fb4-25d486a0dcc9.png" width="25%">   
 
 * 위 그래프는 7개의 노드와 11개의 엣지로 이루어져있다.   
