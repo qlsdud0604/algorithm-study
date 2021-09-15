@@ -66,3 +66,87 @@
 
 ---
 ## 3. 구현 방법
+**1) 노드에 대한 정보**
+<details>
+    <summary><b>코드 보기</b></summary>
+	
+```java
+static class Node implements Comparable<Node> {
+	int number;
+	int weight;
+
+	Node(int number, int weight) {
+		this.number = number;
+		this.weight = weight;
+	}
+
+	@Override
+	public int compareTo(Node o) {
+		return this.weight - o.weight;
+	}
+}
+```
+</details>
+  
+ㆍ 노드에 대한 정보를 정의한 코드이다.   
+ㆍ 각 노드는 번호와 가중치를 가지고 있으며, 우선순위 큐의 활용을 위해 가중치의 오름차순으로 compareTo( ) 메서드를 재정의하였다.   
+</br>
+
+**2) 다익스트라 알고리즘의 사전 준비**
+<details>
+    <summary><b>코드 보기</b></summary>
+	
+```java
+static ArrayList<Node>[] arr;
+static int[] distance;
+static boolean[] visited;
+```
+</details>
+  
+ㆍ 다익스트라 알고리즘을 구현하기 전에 필요한   
+ㆍ arr는 각 노드들의 연결관계를 나타내는 변수이며, ArrayList의 자료구조로 선언하였다.   
+ㆍ distance는 시작 노드에서 각 노드까지의 최단 거리를 저장하는 배열이다.   
+ㆍ visited는 각 노드의 방문여부를 저장하는 배열이다.   
+</br>
+
+**3) 우선순위 큐를 이용한 다익스트라 알고리즘의 구현**
+<details>
+    <summary><b>코드 보기</b></summary>
+	
+```java
+static void dijkstra(int start) {
+	PriorityQueue<Node> queue = new PriorityQueue<>();
+
+	Arrays.fill(distance, Integer.MAX_VALUE);
+
+	distance[start] = 0;
+	queue.add(new Node(start, 0));
+
+	while (!queue.isEmpty()) {
+		Node current = queue.poll();
+
+		if (visited[current.number] == false)
+			visited[current.number] = true;
+		else
+			continue;
+
+		for (int i = 0; i < arr[current.number].size(); i++) {
+			Node next = arr[current.number].get(i);
+
+			if (distance[current.number] + next.weight < distance[next.number]) {
+				distance[next.number] = distance[current.number] + next.weight;
+
+				queue.add(new Node(next.number, distance[next.number]));
+			}
+		}
+	}
+}
+```
+</details>
+  
+ㆍ 우선순위 큐를 선언한 후, distance[ ] 배열을 정수의 최대치로 초기화한다.   
+ㆍ 그 후, 시작 노드의 최단거리를 0으로 초기화를 하고, 시작 노드를 우선순위 큐에 삽입한다.   
+ㆍ 우선순위 큐에서 가장 낮은 가중치를 가진 노드를 꺼내어 방문 여부를 확인한다.   
+ㆍ 방문하지 않은 노드라면, 해당 노드와 인접한 노드들의 가중치와 기존의 가중치를 비교하여 더 낮은 값이라면 새로운 값으로 갱신한다.   
+ㆍ 위 과정을 우선순위 큐가 빈 상태일 때까지 반복한다.   
+</br>
