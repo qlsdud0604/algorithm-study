@@ -51,7 +51,7 @@ public class Main {
 	static void dijkstra(int start) {
 		PriorityQueue<Node> queue = new PriorityQueue<>();
 
-		Arrays.fill(arr, Integer.MAX_VALUE);
+		Arrays.fill(distance, Integer.MAX_VALUE);
 
 		distance[start] = 0;
 		queue.add(new Node(start, 0));
