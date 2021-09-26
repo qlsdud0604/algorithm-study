@@ -1,23 +1,25 @@
-# 자료구조 및 알고리즘 공부
+# 알고리즘 & 자료구조 공부
 
----
-## :point_right: Data Structure
-* [배열을 이용한 이진 검색](https://github.com/qlsdud0604/algorithm-study/tree/main/binary-search-symbol-table)
+## 알고리즘
+* [다양한 정렬 알고리즘](https://qlsdud0604.tistory.com/23?category=1050200)
 
-* [연결 리스트를 이용한 순차 검색](https://github.com/qlsdud0604/algorithm-study/tree/main/sequential-search-symbol-table)
+* [DFS](https://qlsdud0604.tistory.com/24?category=1050200)
 
-* [이진 검색 트리, AVL 트리](https://github.com/qlsdud0604/algorithm-study/tree/main/tree)   
+* [BFS](https://qlsdud0604.tistory.com/25?category=1050200)
+
+* [크루스칼 알고리즘](https://qlsdud0604.tistory.com/26?category=1050200)
+
+* [위상 정렬](https://qlsdud0604.tistory.com/27?category=1050200)
+
+* [다익스트라 알고리즘](https://qlsdud0604.tistory.com/28?category=1050200)   
 </br>
 
----
-## :point_right: Algorithm
-* [다양한 정렬 알고리즘](https://github.com/qlsdud0604/algorithm-study/tree/main/sorting)
+## 자료구조
+* [배열을 이용한 이진 검색](https://qlsdud0604.tistory.com/19?category=1050201)
 
-* [DFS, BFS](https://github.com/qlsdud0604/algorithm-study/tree/main/dfs-bfs)
+* [연결 리스트를 이용한 순차 검색](https://qlsdud0604.tistory.com/20?category=1050201)
 
-* [크루스칼 알고리즘](https://github.com/qlsdud0604/algorithm-study/tree/main/kruskal)
+* [이진 검색 트리](https://qlsdud0604.tistory.com/21?category=1050201)
 
-* [위상 정렬](https://github.com/qlsdud0604/algorithm-study/tree/main/topological-sorting)   
-
-* [다익스트라 알고리즘](https://github.com/qlsdud0604/algorithm-study/tree/main/dijkstra)   
+* [AVL 트리](https://qlsdud0604.tistory.com/22?category=1050201)
 </br>
