@@ -22,4 +22,3 @@
 * [이진 검색 트리](https://qlsdud0604.tistory.com/21?category=1050201)
 
 * [AVL 트리](https://qlsdud0604.tistory.com/22?category=1050201)
-</br>
